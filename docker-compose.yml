@@ -1,0 +1,15 @@
+services:
+  mongo:
+    image: mongo
+    container_name: mongo_new
+    ports:
+      - "27017:27017"
+  todo-app:
+    build: .
+    container_name: todo-app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    networks:
+      - my-network
